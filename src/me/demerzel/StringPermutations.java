@@ -26,7 +26,6 @@ public class StringPermutations {
         while(permutations.size() < getNumberOfPermutations(input)){
             String perm = generate(input);
 
-
             if(permutations.contains(perm)){
                 continue;
             }
@@ -42,6 +41,12 @@ public class StringPermutations {
         writer.close();
     }
 
+    /** This method recursively generates a String based on the input. The generation is a completely random permutation of the original String.
+     * It first selects a random character from the input and uses that as it's first character. Repeat the process until the String is empty.
+     *
+     * @param str User input
+     * @return Randomly generated String based on input String
+     */
     private static String generate(String str){
         Random r = new Random();
 
@@ -55,6 +60,11 @@ public class StringPermutations {
         return "";
     }
 
+    /** A simple factorial method
+     *
+     * @param num User input
+     * @return Factorial of num (num!)
+     */
     private static long factorial(long num){
         if(num == 0){
             return 1;
@@ -63,6 +73,11 @@ public class StringPermutations {
         return num * factorial(num - 1);
     }
 
+    /** This method returns the number of UNIQUE permutations that a given String has. For more information on the formula I used: http://goo.gl/0mHznk
+     *
+     * @param str Input String
+     * @return The number of unique permutations of the String
+     */
     private static int getNumberOfPermutations(String str){
         int denominator = 1;
         for(char c = 'A'; c <= 'z'; c++){
