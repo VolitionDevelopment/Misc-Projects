@@ -31,7 +31,7 @@ public class StringPermutations {
             }
 
             if(perm.equals(input)){
-                System.out.println("FYI, I generated a permutation of the original String.");
+                System.out.println("FYI, the original input String has been randomly generated.");
             }
 
             permutations.add(perm);
