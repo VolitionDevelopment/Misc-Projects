@@ -1,7 +1,7 @@
 package me.demerzel;
 
 
-import org.apache.commons.lang3.StringUtils;
+import me.demerzel.util.StringUtilities;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -15,7 +15,7 @@ public class StringPermutations {
 
     public static void main(String[] args) {
         String input = "Apple";
-        System.out.println("Permutations for '" + input + "': [" + getNumberOfPermutations(input) + "]");
+        System.out.println("Permutations for '" + input + "': [" + StringUtilities.getNumberOfPermutations(input) + "]");
 
         try {
             writer = new PrintWriter("Output.txt", "UTF-8");
@@ -23,7 +23,7 @@ public class StringPermutations {
             e.printStackTrace();
         }
 
-        while(permutations.size() < getNumberOfPermutations(input)){
+        while(permutations.size() < StringUtilities.getNumberOfPermutations(input)){
             String perm = generate(input);
 
             if(permutations.contains(perm)){
@@ -58,34 +58,5 @@ public class StringPermutations {
         }
 
         return "";
-    }
-
-    /** A simple factorial method
-     *
-     * @param num User input
-     * @return Factorial of num (num!)
-     */
-    private static long factorial(long num){
-        if(num == 0){
-            return 1;
-        }
-
-        return num * factorial(num - 1);
-    }
-
-    /** This method returns the number of UNIQUE permutations that a given String has. For more information on the formula I used: http://goo.gl/0mHznk
-     *
-     * @param str Input String
-     * @return The number of unique permutations of the String
-     */
-    private static int getNumberOfPermutations(String str){
-        int denominator = 1;
-        for(char c = 'A'; c <= 'z'; c++){
-            if(str.contains(Character.toString(c))){
-                denominator *= factorial(StringUtils.countMatches(str, Character.toString(c)));
-            }
-        }
-
-        return (int) factorial(str.length()) / denominator;
     }
 }
