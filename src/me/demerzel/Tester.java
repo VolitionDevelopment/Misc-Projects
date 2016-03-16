@@ -7,8 +7,6 @@ import me.demerzel.util.NumberUtilities;
  */
 public class Tester {
     public static void main(String[] args) {
-        for(int i : NumberUtilities.sieveOfEratosthenes(3000)){
-            System.out.println(i);
-        }
+        StringPermutations.run("Apple");
     }
 }

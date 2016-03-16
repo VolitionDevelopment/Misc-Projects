@@ -13,15 +13,14 @@ public class StringPermutations {
     static ArrayList<String> permutations = new ArrayList<>();
     static PrintWriter writer;
 
-    public static void main(String[] args) {
-        String input = "Apple";
-        System.out.println("Permutations for '" + input + "': [" + StringUtilities.getNumberOfPermutations(input) + "]");
-
+    public static void run(String input){
         try {
             writer = new PrintWriter("Output.txt", "UTF-8");
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
+        writer.println("Permutations for '" + input + "': [" + StringUtilities.getNumberOfPermutations(input) + "]");
 
         while(permutations.size() < StringUtilities.getNumberOfPermutations(input)){
             String perm = generate(input);
@@ -38,6 +37,7 @@ public class StringPermutations {
             writer.println(perm);
         }
 
+        System.out.println("Done!");
         writer.close();
     }
 
